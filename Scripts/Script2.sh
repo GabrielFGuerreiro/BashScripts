@@ -8,7 +8,7 @@ read -p "Usuário: " -t 10 nome; echo
 read -sp "Digite sua senha: " senha; echo; echo #s não mostra input 
 read -p "Digite o código de segurança com até 5 dígitos: " -n 5 codigo #n lê exatamente N caracteres
 echo; echo
-echo "-----------------------"
+echo "----------------------"
 echo "CONFIRMAÇÃO DOS DADOS"; echo
-echo -e "Nome: $nome \nSenha: $senha \nCod.Seg: $codigo"; echo
-echo "-----------------------"
+echo -e "Nome: $nome \nSenha: $senha \nCod.Seg: $codigo"
+echo "----------------------"
