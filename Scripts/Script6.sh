@@ -9,8 +9,8 @@ Principal()
       echo "Depois a extensão, separados por espaço"; echo
     fi
 
-    dir $1
-    troca $1 $2
+    dir "$1"
+    troca "$1" "$2"
 }
 
 dir()
@@ -26,7 +26,7 @@ dir()
 troca()
 {
     for arquivo in *."$2"; do
-      if [ "$arquivo" == *-* ]; then
+      if [[ "$arquivo" == *-* ]]; then
         novo=$(echo "$arquivo" | tr '-' '_')
         mv "$arquivo" "$novo"
         echo "Mudando $arquivo para $novo"
@@ -34,4 +34,4 @@ troca()
     done
 }
 
-Principal $1 $2
+Principal "$1" "$2"
