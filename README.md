@@ -50,3 +50,8 @@ Menu
 <3> Listagem somente dos arquivos  
 <4> Listagem somente dos links  
 <5> Sair  
+
+### **Script8**
+ 
+ Um script que recebe um diretório e contabiliza a quantidade de itens (diretórios/arquivos).
+ 
