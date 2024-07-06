@@ -3,12 +3,12 @@ clear; echo
 
 Principal()
 {
-read -p "Digite um diretório válido: " dir
+read -p "Digite um diretÃ³rio vï¿½lido: " dir
 
 if [ -d $dir ]; then
   cd $dir; contar_qnt
 else
-  echo "Diretório inválido"; Principal
+  echo "Diretï¿½rio invï¿½lido"; Principal
 fi
 }
 
@@ -17,9 +17,13 @@ contar_qnt()
 cont=0
 for item in `ls $dir`; do
   cont=$((cont+1))
+  if [[ "$item" == *.txt ]]; then
+    echo -n "A extensï¿½o .txt do item $item foi retirada"
+    mv "$item" "${item%.txt}" # % estï¿½ tirando o .txt
+  fi
 done
-
-echo "O total de itens dentro do diretório é: $cont"
+echo
+echo "Hï¿½ um total de [$cont] itens dentro do diretï¿½rio"
 }
 
 Principal

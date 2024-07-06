@@ -54,4 +54,4 @@ Menu
 ### **Script8**
  
  Um script que recebe um diretório e contabiliza a quantidade de itens (diretórios/arquivos).
- 
+ Se o arquivo tiver a entensão .txt, remoneie sem ela.
