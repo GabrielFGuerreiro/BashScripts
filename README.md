@@ -9,8 +9,8 @@ Este repositório contém os materiais dos meus estudos nas aulas de Sistemas Op
 - **Comandos importantes**: Resolução de problemas com o uso de comandos úteis, como "sed", "grep", "tr", "awk" e outros.
 
 ## Scripts objetivos
-# **Script1**  
+### **Script1**  
 Um script que converta o tempo em minutos e segundos.
 
-**Script2**
+### **Script2**
 Um script que promova a autenticação no ambiente Linux
