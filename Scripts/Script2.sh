@@ -1,7 +1,5 @@
 #!/bin/bash
-#Faça um script que promova a autenticação no ambiente Linux
 clear; echo
-
 echo "Identificação do usuário LINUX";  echo
 echo "O usuário tem 10 segundos para informar o seu nome"
 read -p "Usuário: " -t 10 nome; echo
