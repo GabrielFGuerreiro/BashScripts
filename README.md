@@ -8,7 +8,7 @@ Este repositório contém os materiais dos meus estudos nas aulas de Sistemas Op
 - **Permissões de Arquivos e Diretórios**: Utilização de comandos como chmod para alterar permissões de acesso e chown para modificar proprietários de arquivos.
 - **Comandos importantes**: Resolução de problemas com o uso de comandos úteis, como "sed", "grep", "tr", "awk" e outros.
 
-# Scripts objetivos
+# Scripts descrições
 ### **Script1**  
 Um script que converta o tempo em minutos e segundos.
 
@@ -55,3 +55,7 @@ Menu
  
  Um script que recebe um diretório e contabiliza a quantidade de itens (diretórios/arquivos).
  Se o arquivo tiver a extensão .txt, renomeie sem ela.
+
+ ### **Script9**
+
+ Um script que receba valores de 1 a 100 e mostre a soma dos valores e a sua média enquanto o número -1 não for digitado.
