@@ -59,3 +59,7 @@ Menu
  ### **Script9**
 
  Um script que receba valores de 1 a 100 e mostre a soma dos valores e a sua média enquanto o número -1 não for digitado.
+
+ ### **Script10**
+
+ Um script que receba uma senha. Caso a senha esteja errada, o usuário precisará apertar ENTER para tentar novamente ou ESPAÇO para encerrar o script. O usuário possui apenas 5 tentativas para acertar, caso não consiga, deverá esperar 5 segundos para continuar tentando.
