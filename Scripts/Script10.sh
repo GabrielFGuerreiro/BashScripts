@@ -28,22 +28,27 @@ echo -e "\nSenha correta!"
 
 dnv()
 {
+voltar="a"
 echo -e "\nAperte ENTER para tentar novamente. ESPACO para sair."
-read -sn 1 voltar
+IFS= read -n 1 voltar
 
-if [ "$voltar" == " " ]; then
-  echo -e "\nFechando o script..." 
+if [[ "$voltar" == " " ]]; then
+  clear
+  echo -e "\nFechando o script."; sleep 1; clear #bobagem pra ficar bonito
+  echo -e "\nFechando o script.."; sleep 1; clear
+  echo -e "\nFechando o script..."; sleep 1; clear
   exit
 fi
 
-if [ "$voltar" != "" ]; then
+if [[ "$voltar" != "" ]]; then
   clear
-  echo -e "\nERRO. Valor inv�lido!"
+  echo -e "\nERRO. Valor inválido!"
   dnv
 fi
 }
 
-espera()
+
+tempo()
 {
 temp=5
 clear
