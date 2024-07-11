@@ -23,13 +23,14 @@ while [ "$senha" != "123456" ]; do
 done
 
 echo -e "\nSenha correta!"
+menu
 }
 
 
 dnv()
 {
 voltar="a"
-echo -e "\nAperte ENTER para tentar novamente. ESPACO para sair."
+echo -e "\nAperte ENTER para tentar novamente. ESPAÇO para sair."
 IFS= read -n 1 voltar
 
 if [[ "$voltar" == " " ]]; then
@@ -59,6 +60,40 @@ while [ "$temp" != 0 ]; do
 done
 clear
 }
+
+
+#=================#
+
+#menu geral
+menu()
+{
+echo "===================="
+echo "        MENU        "
+echo "1. Informações"
+
+
+read -p "Digite sua opção" opcao
+case $opcao in
+   1) menu_infos;;
+   *) echo -e "ERRO. Opção inválida!\n"; menu;;
+esac
+}
+
+
+#menu 1 para informações 
+menu_infos()
+{
+echo "====================="
+echo "     Informações     "
+echo "1. Data atual"
+
+read -p "Digite sua opção" opcao
+case $opcao in
+   1) data;;
+   *) echo -e "ERRO. Opção inválida!\n"; menu;;
+esac
+}
+
 Principal
 
 
