@@ -63,3 +63,61 @@ Menu
  ### **Script10**
 
  Um script que receba uma senha. Caso a senha esteja errada, o usuário precisará apertar ENTER para tentar novamente ou ESPAÇO para encerrar o script. O usuário possui apenas 5 tentativas para acertar, caso não consiga, deverá esperar 5 segundos para continuar tentando.
+
+# Docker
+Para rodar os script é possível usar o Git Bash do VS Code, porém nem todos os comandos do ambiente linux estão disponíveis. Por isso, usei um contêiner Docker para configurar um ambiente de desenvolvimento isolado com todas as ferramentas necessárias.
+
+## Como configurar o ambiente
+
+### Passo 1: Instalar Docker
+
+Se você ainda não tem Docker instalado, pode baixar e instalar a partir do site oficial: 
+
+### Passo 2: Criar um Arquivo Dockerfile
+
+No VS Code, crie um novo arquivo chamado Dockerfile no diretório do seu projeto com o seguinte conteúdo:
+
+FROM ubuntu:latest
+
+#Instalar utilitários necessários
+RUN apt-get update && apt-get install -y \
+    bsdmainutils \
+    util-linux \
+    && rm -rf /var/lib/apt/lists/*
+
+#Definir o diretório de trabalho
+WORKDIR /workspace
+
+#Iniciar com bash
+CMD ["bash"]
+
+
+### Passo 3: Criar um Arquivo docker-compose.yml
+
+Crie um arquivo docker-compose.yml no mesmo diretório com o seguinte conteúdo:
+
+version: '3.8'
+
+services:
+  bash-env:
+    build: .
+    volumes:
+      - .:/workspace
+    tty: true
+
+### Passo 4: Dev Containers
+
+1. Instale a extensão Dev Containers
+2. Com o Docker aberto, abra o comando Command Palette (Ctrl+Shift+P) e procure por Remote-Containers: Open Folder in Container.
+3. Selecione o diretório do seu projeto.
+
+(O VS Code vai usar o docker-compose.yml e o Dockerfile para configurar e abrir o ambiente de desenvolvimento dentro de um contêiner Docker.)
+
+## Como parar a execução do contêiner/desconecta-lo do VS
+
+### Opção 1
+No VS Code, você pode desconectar do contêiner Docker através da paleta de comandos. Pressione Ctrl+Shift+P para abrir a paleta de comandos e digite Remote-Containers: Close Remote Connection. Isso irá desconectar o VS Code do contêiner.
+
+### Opção 2
+Se você estiver usando o Docker Desktop, pode abrir o Docker Dashboard e encontrar o contêiner em execução na lista de contêineres.
+Clique no contêiner e, em seguida, clique no botão para parar o contêiner.
