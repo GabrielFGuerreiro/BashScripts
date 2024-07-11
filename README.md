@@ -64,6 +64,8 @@ Menu
 
  Um script que receba uma senha. Caso a senha esteja errada, o usuário precisará apertar ENTER para tentar novamente ou ESPAÇO para encerrar o script. O usuário possui apenas 5 tentativas para acertar, caso não consiga, deverá esperar 5 segundos para continuar tentando.
 
+ Após o usuário acertar a senha, um menu com opções deve aparecer. A opção 1 tem o objetivo de informar o user com diversas informações.
+
 # Docker
 Para rodar os script é possível usar o Git Bash do VS Code, porém nem todos os comandos do ambiente linux estão disponíveis. Por isso, usei um contêiner Docker para configurar um ambiente de desenvolvimento isolado com todas as ferramentas necessárias.
 
@@ -110,7 +112,6 @@ services:
 1. Instale a extensão Dev Containers
 2. Com o Docker aberto, abra o comando Command Palette (Ctrl+Shift+P) e procure por Remote-Containers: Open Folder in Container.
 3. Selecione o diretório do seu projeto.
-
 (O VS Code vai usar o docker-compose.yml e o Dockerfile para configurar e abrir o ambiente de desenvolvimento dentro de um contêiner Docker.)
 
 ## Como parar a execução do contêiner/desconecta-lo do VS
