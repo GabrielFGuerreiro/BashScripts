@@ -81,31 +81,31 @@ No VS Code, crie um novo arquivo chamado Dockerfile no diretório do seu projeto
 
 FROM ubuntu:latest
 
-#Instalar utilitários necessários
-RUN apt-get update && apt-get install -y \
-    bsdmainutils \
-    util-linux \
-    && rm -rf /var/lib/apt/lists/*
+#Instalar utilitários necessários  
+RUN apt-get update && apt-get install -y \  
+    bsdmainutils \  
+    util-linux \  
+    && rm -rf /var/lib/apt/lists/*  
 
-#Definir o diretório de trabalho
-WORKDIR /workspace
+#Definir o diretório de trabalho  
+WORKDIR /workspace  
 
-#Iniciar com bash
-CMD ["bash"]
+#Iniciar com bash  
+CMD ["bash"]  
 
 
 ### Passo 3: Criar um Arquivo docker-compose.yml
 
 Crie um arquivo docker-compose.yml no mesmo diretório com o seguinte conteúdo:
 
-version: '3.8'
+version: '3.8'  
 
-services:
-  bash-env:
-    build: .
-    volumes:
-      - .:/workspace
-    tty: true
+services:  
+  bash-env:  
+    build: .  
+    volumes:  
+      - .:/workspace  
+    tty: true  
 
 ### Passo 4: Dev Containers
 
