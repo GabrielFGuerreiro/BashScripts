@@ -22,11 +22,11 @@ while [ "$senha" != "123456" ]; do
    fi	 
 done
 
-echo -e "\nSenha correta!"
+echo -e "\nSenha correta!"; sleep 2
 menu
 }
 
-
+#função para colocar a senha novamente
 dnv()
 {
 voltar="a"
@@ -34,11 +34,7 @@ echo -e "\nAperte ENTER para tentar novamente. ESPAÇO para sair."
 IFS= read -n 1 voltar
 
 if [[ "$voltar" == " " ]]; then
-  clear
-  echo -e "\nFechando o script."; sleep 1; clear #bobagem pra ficar bonito
-  echo -e "\nFechando o script.."; sleep 1; clear
-  echo -e "\nFechando o script..."; sleep 1; clear
-  exit
+  sair
 fi
 
 if [[ "$voltar" != "" ]]; then
@@ -49,6 +45,7 @@ fi
 }
 
 
+#função contagem do bloqueio de tentativas
 tempo()
 {
 temp=5
@@ -62,38 +59,57 @@ clear
 }
 
 
-#=================#
+#=================# 2º parte 
 
-#menu geral
+#função menu geral
 menu()
 {
+clear
 echo "===================="
-echo "        MENU        "
+echo "     MENU GERAl     "
 echo "1. Informações"
+echo "5. Sair"
 
-
-read -p "Digite sua opção" opcao
+read -p "Digite sua opção: " -n 1 opcao
 case $opcao in
    1) menu_infos;;
+   5) sair;;
    *) echo -e "ERRO. Opção inválida!\n"; menu;;
 esac
 }
 
 
-#menu 1 para informações 
+#função menu 1 para informações 
 menu_infos()
 {
+clear
 echo "====================="
-echo "     Informações     "
+echo "     INFORMAÇÕES     "
+echo "0. Voltar"
 echo "1. Data atual"
+echo "3. Histórico"
+echo "5. Sair"
 
-read -p "Digite sua opção" opcao
+read -p "Digite sua opção: " -n 1 opcao
 case $opcao in
-   1) data;;
-   *) echo -e "ERRO. Opção inválida!\n"; menu;;
+   0) menu;;
+   1) date "+%d %B %Y, %A, %H:%I:%m";;
+   3) historico;;
+   5) sair;;
+   *) echo -e "ERRO. Opção inválida!\n"; menu_infos;;
 esac
 }
 
+
+#função pra encerrar o script
+sair()
+{
+  clear
+  echo -e "\nFechando o script."; sleep 1; clear #bobagem pra ficar bonito
+  echo -e "\nFechando o script.."; sleep 1; clear
+  echo -e "\nFechando o script..."; sleep 1; clear
+  exit
+}
 Principal
 
 
