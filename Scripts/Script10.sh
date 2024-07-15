@@ -1,6 +1,8 @@
 #!/bin/bash
+clear; echo
 Principal()
 {
+
 senha=""
 cont=0
 
@@ -11,10 +13,8 @@ while [ "$senha" != "123456" ]; do
 
    cont=$((cont + 1))
    if [ "$cont" -eq 5 ]; then
-      echo -e "\nMáximo de tentativas atingidas\nTente novamente em 05 segundos"
-      sleep 2
-      tempo
-      Principal
+      clear; echo -e "\nMáximo de tentativas atingidas\nTente novamente em 05 segundos"
+      sleep 2; tempo; Principal
    fi
 
    if [ "$senha" != "123456" ]; then
@@ -23,11 +23,11 @@ while [ "$senha" != "123456" ]; do
    fi	 
 done
 
-echo -e "\nSenha correta!"; sleep 2
+echo -e "\nSenha correta!"; sleep 1.5
 menu
 }
 
-#função para colocar a senha novamente
+#===função para colocar a senha novamente===#
 dnv()
 {
 voltar="a"
@@ -45,8 +45,7 @@ if [[ "$voltar" != "" ]]; then
 fi
 }
 
-
-#função contagem do bloqueio de tentativas
+#===função contagem do bloqueio de tentativas===#
 tempo()
 {
 temp=5
@@ -61,7 +60,6 @@ clear
 
 
 #========== 2º parte ==========#
-
 #===função menu geral===#
 menu()
 {
@@ -70,20 +68,22 @@ clear
 echo "===================="
 echo "     MENU GERAl     "
 echo "1. Informações"
+echo "2. Dados do sistema"
 echo "5. Sair"
 
 read -p "Digite sua opção: " -n 1 opcao
-historico "$opcao" #para o historico
+historico "$opcao"; clear #para o historico
 
 case $opcao in
-   1) clear; menu_infos;;
+   1) menu_infos;;
+   2) menu_sist;;
    5) sair;;
-   *) clear; echo -e "ERRO. Opção inválida!\n";sleep 2; menu;;
+   *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu;;
 esac
 }
 
 
-#===função menu 1 para informações===# 
+#===[1] função menu informações===# 
 menu_infos()
 {
 while true; do
@@ -100,9 +100,9 @@ while true; do
   case $opcao in
      0) menu;;
      1) data;;
-     3) echo -e "|Histórico|$historico";;
+     3) echo -e "|Histórico|\n$hist";;
      5) sair;;
-     *) echo -e "ERRO. Opção inválida!\n"; menu_infos;;
+     *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_infos;;
   esac
 done
 }
@@ -111,18 +111,47 @@ done
 #===função data===#
 data()
 {
-echo -n "Data atual: "
+echo -n "<Data atual>"; echo
 date "+%d %B %Y, %A, %H:%I:%m"
 }
 
 #===função histórico===#
 historico()
 {
-if [ -z "$historico" ]; then
-  historico="\n$1"
+if [ -z "$hist" ]; then
+  hist="\n$1"
 else
-  historico="$historico\n$1"
+  hist="$hist\n$1"
 fi
+}
+
+#===[2] função menu dados do sistema===#
+menu_sist()
+{
+clear
+while true; do
+  echo "=========================="
+  echo "     DADOS DO SISTEMA     "
+  echo "0. Voltar"
+  echo "1. Nome da rede do terminal"
+  echo "2. Tipo do processador"
+  echo "3. Nome do sistema operacional"
+  echo "4. Versão do sistema operacional"
+  echo "5. Sair"
+
+  read -p "Digite sua opção: " -n 1 opcao
+  historico "$opcao"; clear #para o historico
+
+  case $opcao in
+     0) menu;;
+     1) echo -e "<Nome da rede do terminal>\n`uname -m`";;
+     2) echo -e "<Tipo do processador\n`uname -n`";;
+     3) echo -e "<Nome do S.O.>\n`uname -s`";;
+     4) echo -e "<Versão do sistema operacional>\n`uname -r`";;
+     5) sair;;
+     *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_sist;;
+  esac
+done
 }
 
 #===função pra encerrar o script===#
