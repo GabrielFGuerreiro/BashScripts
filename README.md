@@ -66,6 +66,8 @@ Menu
 
  Após o usuário acertar a senha, um menu com opções deve aparecer. A opção 1 tem o objetivo de informar o user com diversas informações como a data/horário atual, o histórico de pesquisas.
 
+A opção 2 traz dados sobre o sistema operacional como nome da rede do terminal, tipo do processador, nome do sistema operacional e versão do sistema operacional.
+
 # Docker
 Para rodar os script é possível usar o Git Bash do VS Code, porém nem todos os comandos do ambiente linux estão disponíveis. Por isso, usei um contêiner Docker para configurar um ambiente de desenvolvimento isolado com todas as ferramentas necessárias.
 
