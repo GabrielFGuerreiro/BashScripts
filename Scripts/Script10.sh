@@ -66,10 +66,11 @@ menu()
 opcao=0
 clear
 echo "===================="
-echo "     MENU GERAl     "
+echo "     [MENU GERAl]     "
 echo "1. Informações"
 echo "2. Dados do sistema"
 echo "5. Sair"
+echo "===================="
 
 read -p "Digite sua opção: " -n 1 opcao
 historico "$opcao"; clear #para o historico
@@ -88,9 +89,10 @@ menu_infos()
 {
 while true; do
   echo "====================="
-  echo "     INFORMAÇÕES     "
+  echo "     [INFORMAÇÕES]     "
   echo "0. Voltar"
   echo "1. Data atual"
+  echo "2. Informações do usuário"
   echo "3. Histórico"
   echo "5. Sair"
 
@@ -100,10 +102,12 @@ while true; do
   case $opcao in
      0) menu;;
      1) data;;
+     2) user;;
      3) echo -e "|Histórico|\n$hist";;
      5) sair;;
      *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_infos;;
   esac
+  tecla
 done
 }
 
@@ -113,6 +117,27 @@ data()
 {
 echo -n "<Data atual>"; echo
 date "+%d %B %Y, %A, %H:%I:%m"
+}
+
+
+#===função infos usuário===#
+user()
+{
+user=""; username=""
+while [ -z "$username" ]; do
+  read -p "Digite o nome do usuário: " user
+                                                    #filtra com o que começa com o valor do "user"
+  IFS=: read -r username _ uid gid coment dirnat shell _ < <(grep "^$user:" /etc/passwd)
+        
+  if [ -z "$username" ]; then
+    echo -e "Usuário não encontrado\n"
+    sleep 1
+    clear
+  fi
+done
+    
+echo "Nome do usuário: $username"; echo "ID do usuário: $uid"; echo "ID do grupo: $gid"
+echo "Comentário: $coment"; echo "Diretório nativo: $dirnat"; echo "Shell: $shell" 
 }
 
 #===função histórico===#
@@ -131,7 +156,7 @@ menu_sist()
 clear
 while true; do
   echo "=========================="
-  echo "     DADOS DO SISTEMA     "
+  echo "    [DADOS DO SISTEMA]     "
   echo "0. Voltar"
   echo "1. Nome da rede do terminal"
   echo "2. Tipo do processador"
@@ -152,6 +177,15 @@ while true; do
      *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_sist;;
   esac
 done
+}
+
+
+
+tecla() 
+{
+  #bobagem que pede um input do user para voltar p/ o menu dps de fazer oq queria
+   echo -e "\n<Pressione qualquer tecla para continuar>"; read -n 1 qualquer_teclar
+   clear
 }
 
 #===função pra encerrar o script===#
