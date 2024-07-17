@@ -68,6 +68,8 @@ Menu
 
 A opção 2 traz dados sobre o sistema operacional como nome da rede do terminal, tipo do processador, nome do sistema operacional e versão do sistema operacional.
 
+A opção 3 permite o gerenciamento de itens (diretórios, arquivos e links) como criar, listar e excluir.
+
 # Docker
 Para rodar os script é possível usar o Git Bash do VS Code, porém nem todos os comandos do ambiente linux estão disponíveis. Por isso, usei um contêiner Docker para configurar um ambiente de desenvolvimento isolado com todas as ferramentas necessárias.
 
