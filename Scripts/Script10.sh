@@ -3,7 +3,7 @@ clear; echo
 Principal()
 {
 
-senha=""
+senha="123456"
 cont=0
 
 while [ "$senha" != "123456" ]; do
@@ -69,6 +69,7 @@ echo "===================="
 echo "     [MENU GERAl]     "
 echo "1. Informações"
 echo "2. Dados do sistema"
+echo "3. Gerenciar itens"
 echo "5. Sair"
 echo "===================="
 
@@ -78,6 +79,7 @@ historico "$opcao"; clear #para o historico
 case $opcao in
    1) menu_infos;;
    2) menu_sist;;
+   3) menu_arq;;
    5) sair;;
    *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu;;
 esac
@@ -124,9 +126,9 @@ date "+%d %B %Y, %A, %H:%I:%m"
 user()
 {
 user=""; username=""
-while [ -z "$username" ]; do
+while [ -z "$username" ]; do #enquanto for vazia, continua no while
   read -p "Digite o nome do usuário: " user
-                                                    #filtra com o que começa com o valor do "user"
+  #só deixa de ficar vazia se esse read der certo       #filtra a linha que começa com o valor do "user"
   IFS=: read -r username _ uid gid coment dirnat shell _ < <(grep "^$user:" /etc/passwd)
         
   if [ -z "$username" ]; then
@@ -176,11 +178,62 @@ while true; do
      5) sair;;
      *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_sist;;
   esac
+  tecla
 done
 }
 
 
 
+#===[3] função arquivos===#
+menu_arq()
+{
+clear
+while true; do
+  echo "=========================="
+  echo "       [ARQUIVOS]        "
+  echo "0. Voltar"
+  echo "1. Criar itens"
+  echo "2. Listar itens"
+  echo "3. "
+  echo "4. "
+  echo "5. Sair"
+
+  read -p "Digite sua opção: " -n 1 opcao
+  historico "$opcao"; clear #para o historico
+
+  case $opcao in
+     0) menu;;
+     1) criar;;
+     5) sair;;
+     *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_sist;;
+  esac
+  tecla
+done
+}
+
+
+
+#função para criar itens (diretórios, arquivos, links, etc)
+criar()
+{
+  item=""
+  echo -e "<Digite o caracter para criar o item correspondente>\nd. Diretório\na. Arquivo vazio\nl. Link"
+  read -n 1 item; clear
+  if [ "$item" == "d" ]; then
+    read -p "Digite o nome do diretório: " item; mkdir "$item"
+  elif [ "$item" == "a" ]; then
+    read -p "Digite o nome do arquivo: " item; touch "$item" 
+  elif [ "$item" == "l" ]; then
+    while [ ! -e "$item" ]; do
+      read -p "Digite o caminho/para/link_destino e o nome do link em si: " item item2;  ln "$item"  "$item2"
+      if [ ! -e "$item" ]; then
+        echo "link destino inválido!"; sleep 1; clear
+      fi
+    done
+  else
+    echo "Caracter inválido! Digite novamente"; sleep 1; clear; criar
+  fi
+}
 tecla() 
 {
   #bobagem que pede um input do user para voltar p/ o menu dps de fazer oq queria
