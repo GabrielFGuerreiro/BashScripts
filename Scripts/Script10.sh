@@ -3,7 +3,7 @@ clear; echo
 Principal()
 {
 
-senha="123456"
+senha=""
 cont=0
 
 while [ "$senha" != "123456" ]; do
@@ -65,11 +65,11 @@ menu()
 opcao=0
 clear
 echo "===================="
-echo "     [MENU GERAl]     "
+echo "    [MENU GERAl]    "
 echo "1. Informações"
 echo "2. Dados do sistema"
 echo "3. Gerenciar itens"
-echo "5. Sair"
+echo "4. Sair"
 echo "===================="
 
 read -p "Digite sua opção: " -n 1 opcao
@@ -79,8 +79,8 @@ case $opcao in
    1) menu_infos;;
    2) menu_sist;;
    3) menu_arq;;
-   5) sair;;
-   *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu;;
+   4) sair;;
+   *) echo -e "ERRO. Opção inválida!\n"; sleep 1; menu;;
 esac
 }
 
@@ -95,7 +95,7 @@ while true; do
   echo "1. Data atual"
   echo "2. Informações do usuário"
   echo "3. Histórico"
-  echo "5. Sair"
+  echo "4. Sair"
 
   read -p "Digite sua opção: " -n 1 opcao
   historico "$opcao"; clear #para o historico
@@ -105,7 +105,7 @@ while true; do
      1) data;;
      2) user;;
      3) echo -e "|Histórico|\n$hist";;
-     5) sair;;
+     4) sair;;
      *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_infos;;
   esac
   tecla
@@ -157,14 +157,15 @@ menu_sist()
 {
 clear
 while true; do
-  echo "=========================="
-  echo "    [DADOS DO SISTEMA]     "
+  echo "================================"
+  echo "       [DADOS DO SISTEMA]       "
   echo "0. Voltar"
   echo "1. Nome da rede do terminal"
   echo "2. Tipo do processador"
   echo "3. Nome do sistema operacional"
   echo "4. Versão do sistema operacional"
   echo "5. Sair"
+  echo "================================"
 
   read -p "Digite sua opção: " -n 1 opcao
   historico "$opcao"; clear #para o historico
@@ -182,21 +183,20 @@ while true; do
 done
 }
 
-
-
                      #=====[3] Função arquivos=====#
 menu_arq()
 {
 clear
 while true; do
-  echo "=========================="
-  echo "       [ARQUIVOS]        "
+  echo "================"
+  echo "   [ARQUIVOS]   "
   echo "0. Voltar"
   echo "1. Criar itens"
   echo "2. Listar itens"
   echo "3. Excluir itens"
   echo "4. "
   echo "5. Sair"
+  echo "================"
 
   read -p "Digite sua opção: " -n 1 opcao
   historico "$opcao"; clear #para o historico
@@ -212,8 +212,6 @@ while true; do
   tecla
 done
 }
-
-
 
 #função para criar itens (diretórios, arquivos, links, etc)
 criar()
