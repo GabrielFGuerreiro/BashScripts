@@ -204,6 +204,7 @@ while true; do
   case $opcao in
      0) menu;;
      1) criar;;
+     2) listar;;
      5) sair;;
      *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_sist;;
   esac
@@ -234,6 +235,28 @@ criar()
     echo "Caracter inválido! Digite novamente"; sleep 1; clear; criar
   fi
 }
+
+#função para listar itens (diretórios, arquivos, links, etc)
+listar()
+{
+  item=""
+  echo -e "<Digite o caracter para listar o item correspondente>\na. Todos os itens\nd. Diretórios\na. Arquivos\nl. Links"
+  read -n 1 item; clear
+  if [ "$item" == "a" ]; then
+    echo "Listando tudo no diretório"; ls -l
+  elif [ "$item" == "d" ]; then
+    echo "Listando apenas os diretórios"; ls -l | grep "^d"   #filtra as linhas que começam com "d"
+  elif [ "$item" == "a" ]; then
+    echo "Listando apenas os arquivos"; ls -l | grep "^-"  #filtra as linhas que começam com "-"
+  elif [ "$item" == "l" ]; then
+    echo "Listando apenas os links"; ls -l | grep "^l"  #filtra as linhas que começam com "l"
+  else
+    echo "Caracter inválido! Digite novamente"; sleep 1; clear; criar
+  fi
+}
+
+
+
 tecla() 
 {
   #bobagem que pede um input do user para voltar p/ o menu dps de fazer oq queria
