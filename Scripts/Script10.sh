@@ -59,8 +59,7 @@ clear
 }
 
 
-#========== 2º parte ==========#
-#===função menu geral===#
+              #=====[0] função menu geral=====#
 menu()
 {
 opcao=0
@@ -86,7 +85,7 @@ esac
 }
 
 
-#===[1] função menu informações===# 
+                   #=====[1] função menu informações=====# 
 menu_infos()
 {
 while true; do
@@ -152,7 +151,8 @@ else
 fi
 }
 
-#===[2] função menu dados do sistema===#
+
+               #=====[2] função menu dados do sistema=====#
 menu_sist()
 {
 clear
@@ -184,7 +184,7 @@ done
 
 
 
-#===[3] função arquivos===#
+                     #=====[3] Função arquivos=====#
 menu_arq()
 {
 clear
@@ -194,7 +194,7 @@ while true; do
   echo "0. Voltar"
   echo "1. Criar itens"
   echo "2. Listar itens"
-  echo "3. "
+  echo "3. Excluir itens"
   echo "4. "
   echo "5. Sair"
 
@@ -205,6 +205,7 @@ while true; do
      0) menu;;
      1) criar;;
      2) listar;;
+     3) excluir;;
      5) sair;;
      *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_sist;;
   esac
@@ -256,7 +257,21 @@ listar()
 }
 
 
+#função para excluir itens (diretórios, arquivos, links, etc)
+excluir()
+{
+  item=""
+  while [ ! -e "$item" ]; do
+  echo -e "Digite o nome do item para ser apagado.\n(CUIDADO: O item será apagado sem pedido de confirmação.)"
+  read item
+    if [ ! -e "$item" ]; then
+      echo "Nome inválido!"; sleep 1; clear
+    fi
+  done
+  rm -rf "$item"; echo "Item excluído com êxito!"
+}
 
+#====//===#
 tecla() 
 {
   #bobagem que pede um input do user para voltar p/ o menu dps de fazer oq queria
@@ -264,7 +279,6 @@ tecla()
    clear
 }
 
-#===função pra encerrar o script===#
 sair()
 {
   clear
