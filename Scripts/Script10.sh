@@ -194,8 +194,7 @@ while true; do
   echo "1. Criar itens"
   echo "2. Listar itens"
   echo "3. Excluir itens"
-  echo "4. "
-  echo "5. Sair"
+  echo "4. Sair"
   echo "================"
 
   read -p "Digite sua opção: " -n 1 opcao
@@ -206,7 +205,7 @@ while true; do
      1) criar;;
      2) listar;;
      3) excluir;;
-     5) sair;;
+     4) sair;;
      *) echo -e "ERRO. Opção inválida!\n";sleep 1; menu_sist;;
   esac
   tecla
